@@ -48,7 +48,9 @@ namespace demoQuanLyThuVien
 
         private void btnPhieuMuonSach_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            frmPhieuMuonSach phieumuon = new frmPhieuMuonSach();
+            phieumuon.ShowDialog();
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
@@ -58,7 +60,9 @@ namespace demoQuanLyThuVien
 
         private void btnPhieuTra_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            frmPhieuTraSach pt = new frmPhieuTraSach();
+            pt.ShowDialog();
         }
 
         private void TrangChu_Load(object sender, EventArgs e)
