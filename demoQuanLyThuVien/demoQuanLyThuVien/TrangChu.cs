@@ -41,7 +41,9 @@ namespace demoQuanLyThuVien
 
         private void btnSach_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            frmQLSach ql = new frmQLSach();
+            ql.ShowDialog();
         }
 
         private void btnPhieuMuonSach_Click(object sender, EventArgs e)
