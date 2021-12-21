@@ -49,7 +49,24 @@ namespace demoQuanLyThuVien
 
         public void hienthi()
         {
-            
+            listView1.View = View.Details;
+            listView1.GridLines = true;
+            listView1.FullRowSelect = true;
+            listView1.Items.Clear();
+            listView1.Columns.Clear();
+            listView1.Columns.Add("Mã phiếu mượn", 120);
+            listView1.Columns.Add("Mã thành viên", 120);
+            listView1.Columns.Add("Mã sách", 80);
+            listView1.Columns.Add("Ngày mượn", 100);
+            listView1.Columns.Add("Ngày hẹn trả", 100);
+            foreach (PhieuMuonSach pm in db.PhieuMuonSach.ToList())
+            {
+                ListViewItem li = listView1.Items.Add(pm.maphieumuon);
+                li.SubItems.Add(pm.mathanhvien);
+                li.SubItems.Add(pm.masach);
+                li.SubItems.Add(pm.ngaymuon.Value.ToString("dd/MM/yyyy"));
+                li.SubItems.Add(pm.ngayhentra.Value.ToString("dd/MM/yyyy"));
+            }
 
         }
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
