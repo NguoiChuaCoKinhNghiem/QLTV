@@ -26,10 +26,7 @@ namespace demoQuanLyThuVien
         }
         public void hienthi()
         {
-<<<<<<< HEAD
-=======
 
->>>>>>> PhieuTraSach
             listView1.View = View.Details;
             listView1.GridLines = true;
             listView1.FullRowSelect = true;
@@ -60,10 +57,7 @@ namespace demoQuanLyThuVien
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-=======
 
->>>>>>> PhieuTraSach
             foreach (ListViewItem li in listView1.SelectedItems)
             {
                 txtMaPhieuTra.Text = li.SubItems[0].Text;
@@ -84,10 +78,7 @@ namespace demoQuanLyThuVien
 
         private void btnHoanTat_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-=======
 
->>>>>>> PhieuTraSach
             this.Hide();
             frmPhieuMuonSach pm = new frmPhieuMuonSach();
             pm.ShowDialog();
