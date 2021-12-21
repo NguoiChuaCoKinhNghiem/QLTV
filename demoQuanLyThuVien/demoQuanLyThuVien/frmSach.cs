@@ -34,7 +34,9 @@ namespace demoQuanLyThuVien
         }
         private void btnTroVe_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            frmQLSach ql = new frmQLSach();
+            ql.ShowDialog();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -120,7 +122,13 @@ namespace demoQuanLyThuVien
 
         private void btnHoantat_Click(object sender, EventArgs e)
         {
-            
+            foreach (ListViewItem li in listView1.SelectedItems)
+            {
+                Sach s = db.Sach.Find(li.SubItems[0].Text);
+                frmChiTietPhieuMuon phiuemuon = new frmChiTietPhieuMuon(pm, tv, s);
+                this.Hide();
+                phiuemuon.ShowDialog();
+            }
         }
     }
 }
