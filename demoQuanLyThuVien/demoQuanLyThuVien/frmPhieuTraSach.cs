@@ -57,17 +57,31 @@ namespace demoQuanLyThuVien
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
+            foreach (ListViewItem li in listView1.SelectedItems)
+            {
+                txtMaPhieuTra.Text = li.SubItems[0].Text;
+                txtMaPhieuMuon.Text = li.SubItems[1].Text;
+                dtNgayTra.Value = DateTime.Parse(li.SubItems[2].Text);
+                //txtTinhTrang.Text = li.SubItems[3].Text;
+                cboTT.Text = li.SubItems[3].Text;
+                txtPhiPhat.Text = li.SubItems[4].Text;
+            }
         }
 
         private void btnTroLai_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            TrangChu tc = new TrangChu();
+            tc.ShowDialog();
         }
 
         private void btnHoanTat_Click(object sender, EventArgs e)
         {
-            
+
+            this.Hide();
+            frmPhieuMuonSach pm = new frmPhieuMuonSach();
+            pm.ShowDialog();
         }
 
         private void btnSửa_Click(object sender, EventArgs e)
