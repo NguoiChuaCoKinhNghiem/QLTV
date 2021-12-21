@@ -92,22 +92,52 @@ namespace demoQuanLyThuVien
 
         private void lvThanhVien_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+            foreach (ListViewItem li in lvThanhVien.SelectedItems)
+            {
+                txtTimKiem.Text = li.SubItems[0].Text;
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            frmChiTietThanhVien thanhVien = new frmChiTietThanhVien();
+            thanhVien.ShowDialog();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            
+            ThanhVien tv;
+            foreach (ListViewItem li in lvThanhVien.SelectedItems)
+            {
+                tv = db.ThanhVien.Find(li.SubItems[0].Text);
+                frmChiTietThanhVien thanhVien = new frmChiTietThanhVien(tv);
+                this.Hide();
+                thanhVien.ShowDialog();
+
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            
+            bool kq = false;
+            foreach (ListViewItem li in lvThanhVien.SelectedItems)
+            {
+                kq = true;
+                ThanhVien tv = db.ThanhVien.Find(li.SubItems[0].Text);
+                if (tv != null)
+                {
+                    if (tv.PhieuMuonSach.Count == 0)
+                        db.ThanhVien.Remove(tv);
+                    else
+                        MessageBox.Show("Không thể xóa được!!!!!");
+                }
+                db.SaveChanges();
+            }
+            if (kq)
+            {
+                hienthi();
+            }
         }
     }
 }
