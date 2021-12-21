@@ -86,17 +86,48 @@ namespace demoQuanLyThuVien
 
         private void btnSửa_Click(object sender, EventArgs e)
         {
-           
+            PhieuTraSach pt = db.PhieuTraSach.Find(txtMaPhieuTra.Text);
+            if (pt != null)
+            {
+                pt.maphieumuon = txtMaPhieuMuon.Text;
+                pt.ngaytra = dtNgayTra.Value;
+                pt.tinhtrang = cboTT.Text;
+                pt.tienphat = int.Parse(txtPhiPhat.Text);
+            }
+            db.SaveChanges();
+            hienthi();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-           
+            PhieuTraSach pt = db.PhieuTraSach.Find(txtMaPhieuTra.Text);
+            if (pt != null)
+            {
+                MessageBox.Show("Phiếu trả sach này đã tồn tại không thể thêm mới!!!!!");
+            }
+            else
+            {
+                pt = new PhieuTraSach();
+                pt.maphieumuon = txtMaPhieuMuon.Text;
+                pt.maphieutra = txtMaPhieuTra.Text;
+                pt.ngaytra = dtNgayTra.Value;
+                pt.tinhtrang = cboTT.Text;
+                pt.tienphat = int.Parse(txtPhiPhat.Text);
+                db.PhieuTraSach.Add(pt);
+                db.SaveChanges();
+            }
+            hienthi();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            
+            foreach (ListViewItem li in listView1.SelectedItems)
+            {
+                PhieuTraSach pt = db.PhieuTraSach.Find(li.SubItems[0].Text);
+                db.PhieuTraSach.Remove(pt);
+                db.SaveChanges();
+                hienthi();
+            }
         }
         public frmPhieuTraSach(PhieuMuonSach pm)
         {
