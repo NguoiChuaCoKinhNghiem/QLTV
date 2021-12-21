@@ -28,7 +28,9 @@ namespace demoQuanLyThuVien
 
         private void btnTroVe_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            TrangChu tc = new TrangChu();
+            tc.ShowDialog();
         }
 
 
@@ -39,8 +41,14 @@ namespace demoQuanLyThuVien
 
         private void btnTaoPhieu_Click(object sender, EventArgs e)
         {
-           
-            
+            foreach (ListViewItem li in lvThanhVien.SelectedItems)
+            {
+                ThanhVien tv = db.ThanhVien.Find(li.SubItems[0].Text);
+                this.Hide();
+                frmChiTietPhieuMuon phieu = new frmChiTietPhieuMuon(tv);
+                phieu.ShowDialog();
+            }
+
         }
 
         private void frmThanhVien_Load(object sender, EventArgs e)
