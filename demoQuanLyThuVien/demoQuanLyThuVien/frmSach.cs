@@ -39,12 +39,20 @@ namespace demoQuanLyThuVien
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            frmChiTietSach cts = new frmChiTietSach();
+            cts.ShowDialog();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-
+            foreach (ListViewItem li in listView1.SelectedItems)
+            {
+                Sach s = db.Sach.Find(li.SubItems[0].Text);
+                frmChiTietSach sach = new frmChiTietSach(s);
+                this.Hide();
+                sach.ShowDialog();
+            }
         }
 
         private void frmSach_Load(object sender, EventArgs e)
